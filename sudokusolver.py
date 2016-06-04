@@ -12,7 +12,7 @@ sudoku = [[0,0,0,0,0,0,0,0,0],# 0
 					[0,0,0,0,0,0,0,0,0]]# 8
 
 try:
-	with open('sudoku.txt') as sudoku:
+	with open('sudokus/sudoku.txt') as sudoku:
 		sudoku = [list(map(int,x.strip('\n').split())) for x in sudoku.readlines()]
 except FileNotFoundError:
 	print('Sudoku file not found, using default.')
