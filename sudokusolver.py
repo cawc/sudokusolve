@@ -1,15 +1,21 @@
 import check
 
 EMPTY = 0 #0 1 2 3 4 5 6 7 8
-sudoku = [[0,0,0,0,0,9,1,0,6],# 0
-					[0,0,7,0,1,3,0,0,4],# 1
-					[0,0,1,2,0,0,5,3,0],# 2
-					[0,7,0,3,2,0,4,6,0],# 3
-					[4,0,0,9,0,6,0,0,3],# 4
-					[0,9,3,0,7,4,0,5,0],# 5
-					[0,8,6,0,0,1,2,0,0],# 6
-					[7,0,0,6,5,0,3,0,0],# 7
-					[2,0,4,8,0,0,0,0,0]]# 8
+sudoku = [[0,0,0,0,0,0,0,0,0],# 0
+					[0,0,0,0,0,0,0,0,0],# 1
+					[0,0,0,0,0,0,0,0,0],# 2
+					[0,0,0,0,0,0,0,0,0],# 3
+					[0,0,0,0,0,0,0,0,0],# 4
+					[0,0,0,0,0,0,0,0,0],# 5
+					[0,0,0,0,0,0,0,0,0],# 6
+					[0,0,0,0,0,0,0,0,0],# 7
+					[0,0,0,0,0,0,0,0,0]]# 8
+
+try:
+	with open('sudoku.txt') as sudoku:
+		sudoku = [list(map(int,x.strip('\n').split())) for x in sudoku.readlines()]
+except FileNotFoundError:
+	print('Sudoku file not found, using default.')
 
 def numPossible(_x,_y,_sudoku,_n):
 	return check.safe(_x,_y,_sudoku,_n)
@@ -46,8 +52,6 @@ def solve(_sudoku, _x=0, _y=0):
 	return False
 
 solve(sudoku)
-
-
 
 for x in range(0,9):
 	print(sudoku[x])
